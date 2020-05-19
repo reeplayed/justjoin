@@ -17,7 +17,7 @@ const Main = ({setAllOffers, state})=> {
         function load_script_promise(){
             return new Promise(function(resolve, reject){
                 const googleMapScript = document.createElement('script')
-                googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCzuSdRVtpNzkDqnPd2NuF7x_4ZLR_92pc&callback=initMap'
+                googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCzuSdRVtpNzkDqnPd2NuF7x_4ZLR_92pc'
                 window.document.body.appendChild(googleMapScript)
                 googleMapScript.addEventListener('load', function(){
                     resolve()
