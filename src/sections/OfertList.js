@@ -65,7 +65,7 @@ const OfertList = ({history, setMarkers,setMarkerClass, setParams, setGoogleMap,
             }) 
         }
         
-    },[location, tech, from, to, exp_lvl, markers, loading, sort])
+    },[location, tech, from, to, exp_lvl, loading, sort])
     
     return (
         <Container>

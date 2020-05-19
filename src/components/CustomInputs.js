@@ -16,7 +16,7 @@ export const InputComponent = ({ id, label, register, required, errors, type }) 
 }
 
 export const SelectComponent = ({ id, label, register, required, options, errors }) => { 
-    console.log(errors)
+    
     return(
     <InputWrapper>
         <Label>{label}</Label>
