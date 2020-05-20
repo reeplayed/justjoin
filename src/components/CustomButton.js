@@ -33,7 +33,7 @@ const Button = styled.button`
     align-items: center;
     transition: all .3s;
     &:hover{
-        background: ${({theme, active})=>active ? theme.colors.opacityPink : theme.colors.buttonBackgroundHover};
+        background: ${({theme, active})=>active ? theme.colors.buttonBackgroundHover : theme.colors.buttonBackgroundHover};
     }
 `;
 const IconWrapper = styled.div`
