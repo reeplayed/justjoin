@@ -34,6 +34,12 @@ export const SelectComponent = ({ id, label, register, required, options, errors
     )
 }
 
+const Info = styled.span`
+    color: ${({theme, span})=>span ?theme.colors.span : theme.colors.pink};
+    font-size: 0.7rem;
+    margin-left: 10px;
+`;
+
 export const StyledTextField = styled.input`
     border: 1px solid ${({theme})=> theme.colors.buttonBorder};
     border-radius: 18px;

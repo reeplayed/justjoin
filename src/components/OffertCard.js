@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import SmallLabel from './SmallLabel';
 import { BusinessLabel, LocationLabel } from './Label';
 import dateConvert from '../helpers/dateConvert';
+import {baseURL} from '../axios';
 
 const OffertCard = ({slug, tech, title, company_name, city, image, technology, from, to, place_id, date_add}) => {
    
@@ -21,7 +22,7 @@ const OffertCard = ({slug, tech, title, company_name, city, image, technology, f
             >
                 <TechColor tech={tech}/>
                 <ImgWrapper>
-                    <Img src={'http://127.0.0.1:8000'+image}/>
+                    <Img src={baseURL+image}/>
                 </ImgWrapper>
                 <InfoContainer>
                     <TopWrapper>
@@ -44,8 +45,8 @@ const OffertCard = ({slug, tech, title, company_name, city, image, technology, f
                                 >
                                 {from} - {to} PLN
                             </Typography>
-                            <SmallLabel margin='0 5px 0 10px'>
-                                {dateConvert(date_add)}d ago
+                            <SmallLabel isNew={!dateConvert(date_add)} margin='0 5px 0 10px'>
+                                {dateConvert(date_add)>0 ? dateConvert(date_add)+'d ago' : 'New'}
                             </SmallLabel>
                         </SalaryWrapper>
                     </TopWrapper>

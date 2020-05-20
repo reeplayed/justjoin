@@ -2,6 +2,7 @@ import techIcon from './helpers/techIconSwitch';
 import stringFormat from './helpers/stringFormat';
 import {latlngOptions} from './helpers/Options';
 import './googleMap.css'
+import {baseURL} from './axios';
 
   const createHTMLMapMarker = (history) =>{
 
@@ -167,7 +168,7 @@ import './googleMap.css'
               this.urlPush(item.slug)
           }
           htmlEl.innerHTML =  `<div class='logo_wrapper'>
-                                  <img class='logo' src=${'http://127.0.0.1:8000'+item.image}/>
+                                  <img class='logo' src=${baseURL+item.image}/>
                                 </div>
                                 <div class='item_info_container'>
                                   <span class='item_info_name'>${item.offer_title}</span>

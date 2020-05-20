@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 const Logo = ({dark_mode, center}) => {
     return (
-        <StyledLink to='/'>
             <Typography align={center}>
-                justjoin{dark_mode && 't'}.it
+                <StyledLink to='/'>
+                    justjoin{dark_mode && 't'}.it
+                </StyledLink>
             </Typography>
-        </StyledLink>
     );
 }
 

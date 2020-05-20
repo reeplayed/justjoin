@@ -29,6 +29,7 @@ function AddOffert() {
     const [image, setImage] = useState(null)
     const [description, setDescription] = useState('')
     const [descriptionError, setDescriptionError] = useState('')
+    const [loading, setLoading] = useState(false)
     const fullScreen = useMediaQuery('(max-width:800px)');
 
     async function onSubmit(inputs_data) {
@@ -100,6 +101,8 @@ function AddOffert() {
             form_data.append(key, value)
         })
 
+        setLoading(true);
+
         axios.post('/posts/', form_data, {
           headers: {
             'content-type': 'multipart/form-data'
@@ -110,6 +113,7 @@ function AddOffert() {
             alert('Success. You add offer.')
         })
         .catch(err=>alert(err.message))
+        .finally(()=>setLoading(false))
     }
 
     const fileSelectedHandler = event =>{
@@ -236,8 +240,7 @@ function AddOffert() {
                                         ref={register({
                                                 required: 'This field is required.',  
                                                 validate: {
-                                                    lessThan: value => value > 0 || 'Company size should be more than 0.',
-                                                    moreThanSalaryTo: value => !(getValues('salary_to') && (value > getValues('salary_to') ))  || "Amount can't be more than salary to."
+                                                    lessThan: value => value > 0 || 'Company size should be more than 0.'
                                                 }
                                                 })
                                         } />
@@ -253,8 +256,7 @@ function AddOffert() {
                                             register({
                                             required: 'This field is required.',  
                                             validate: {
-                                                lessThan: value => value > 0 || 'Company size should be more than 0.',
-                                                moreThanSalaryTo: value => !(getValues('salary_from') && (value < getValues('salary_from') ))  || "Amount can't be less than salary from."
+                                                lessThan: value => value > 0 || 'Company size should be more than 0.'
                                             }
                                             })
                                         } />

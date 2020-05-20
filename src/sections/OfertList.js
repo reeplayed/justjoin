@@ -7,7 +7,6 @@ import {useParams,useLocation, Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {setMarkers, setGoogleMap, setOffersList, setMarkerClass, setParams} from '../store/actions';
 import createHTMLMapMarker from '../GoogleMapMarker';
-import closure from '../helpers/closure';
 import {locationArray, expLvlArray, techArray, sortArray} from '../helpers/Options';
 import {initMapOptions} from '../googleMapOptions';
 import _ from 'lodash';
@@ -56,10 +55,10 @@ const OfertList = ({history, setMarkers,setMarkerClass, setParams, setGoogleMap,
 
         else if(!_.isEmpty(markers)){
             
-            closure(()=>{
+            
                 _.forEach(markers, (item)=>{
                     item.update(params)
-                })
+               
                 setParams(params)
                 localStorage.setItem('params', JSON.stringify(params))
             }) 
