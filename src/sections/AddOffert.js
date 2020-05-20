@@ -47,8 +47,7 @@ function AddOffert() {
         const address = {
             city:'',
             street:''
-        }     
-        console.log(data)      
+        }         
 
         if (data.status!=='OK'){
             return setError([
@@ -203,7 +202,8 @@ function AddOffert() {
                                         register({
                                           required: 'This field is required.',  
                                           validate: {
-                                            lessThan: value => value > 0 || 'Company size should be more than 0.'
+                                            lessThan: value => value > 0 || 'Company size should be more than 0.',
+                                            moreThan: value => value < 100000 || "It's too big number."
                                           }
                                         })
                                       } />
@@ -238,7 +238,8 @@ function AddOffert() {
                                         ref={register({
                                                 required: 'This field is required.',  
                                                 validate: {
-                                                    lessThan: value => value > 0 || 'Company size should be more than 0.'
+                                                    lessThan: value => value > 0 || 'Company size should be more than 0.',
+                                                    moreThan: value => value < 120000 || "It's too big number."
                                                 }
                                                 })
                                         } />
@@ -254,7 +255,8 @@ function AddOffert() {
                                             register({
                                             required: 'This field is required.',  
                                             validate: {
-                                                lessThan: value => value > 0 || 'Company size should be more than 0.'
+                                                lessThan: value => value > 0 || 'Company size should be more than 0.',
+                                                moreThan: value => value < 120000 || "It's too big number."
                                             }
                                             })
                                         } />
@@ -293,6 +295,7 @@ function AddOffert() {
                                     <Wrapper>
 
                                         <InputComponent 
+                                            max='35'
                                             type='text'
                                             id={`tech_${index}`}
                                             label="Technology" 

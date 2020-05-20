@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const InputComponent = ({ id, label, register, required, errors, type }) => { 
+export const InputComponent = ({ id, label, register, required, errors, type, max }) => { 
     
     return(
     <InputWrapper>
         <Label>{label}</Label>
-        <StyledTextField 
+        <StyledTextField
+            maxLength={max || "120"}
             type={type} 
             name={id} 
             ref={register({required: required ? 'This field is required.' : false})} />
