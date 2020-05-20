@@ -43,7 +43,7 @@ const lightModeTheme = {
         divider: 'rgb(229, 234, 243)',
         logo: 'rgb(55, 71, 79)',
         pink: 'rgb(255, 64, 129)',
-        opacityPink : 'rgba(255, 64, 129, 0.08)',
+        opacityPink : 'rgb(204, 0, 102)',
         buttonBackground:'rgb(255, 255, 255)',
         buttonBackgroundHover:'rgba(255, 64, 129, 0.08)',
         buttonBorder: 'rgb(228, 232, 240)',

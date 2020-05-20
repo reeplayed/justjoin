@@ -20,7 +20,7 @@ const Button = styled.button`
     margin: ${({margin})=> margin || '0 10px'};
     transition: all 0.4s;
     &:hover{
-        background: ${({theme})=> theme.colors.buttonBackgroundHover};
+        background: ${({theme})=> theme.colors.opacityPink};
     }
     @media only screen and (max-width: ${({theme})=>theme.breakpoints.s}) {
         padding: 8px 8px;
