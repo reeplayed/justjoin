@@ -15,11 +15,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {InputComponent, SelectComponent, InputWrapper, Label, StyledSelect, StyledTextField} from '../components/CustomInputs';
 import Header from '../components/Header'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {key} from '../apiKeys';
 
-const key = 'AIzaSyCzuSdRVtpNzkDqnPd2NuF7x_4ZLR_92pc';
-
-
-  
 function AddOffert() {
     const { register, handleSubmit, errors, getValues, setError } = useForm();
     const [dialogOpen, setDialogOpen] = useState(false)
@@ -38,6 +36,8 @@ function AddOffert() {
             return setDescriptionError('This field is required.')
         }
 
+        setLoading(true);
+        
         const {data} = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, 
                                         {params:
                                             {
@@ -100,8 +100,6 @@ function AddOffert() {
         _.forEach(finalData, (value, key)=>{
             form_data.append(key, value)
         })
-
-        setLoading(true);
 
         axios.post('/posts/', form_data, {
           headers: {
@@ -349,7 +347,11 @@ function AddOffert() {
                         <Wrapper>
 
                         <PinkButton onclick={()=>setDialogOpen(true)}>
-                            Add offer
+                            {loading ? (
+                                <StyledCircularProgress size='10px' color="secondary" />
+                            ):(
+                                'Add offer'
+                            )}
                         </PinkButton>
                         </Wrapper>
                         
@@ -425,6 +427,9 @@ const MyAddIcon = styled(AddIcon)`
 `;
 const MyRemoveIcon = styled(RemoveIcon)`
     color: ${({theme})=>theme.colors.span};
+`;
+const StyledCircularProgress = styled(CircularProgress)`
+    margin: 0 25px;
 `;
 
 export default AddOffert;
