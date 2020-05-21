@@ -10,6 +10,7 @@ import createHTMLMapMarker from '../GoogleMapMarker';
 import {locationArray, expLvlArray, techArray, sortArray} from '../helpers/Options';
 import {initMapOptions} from '../googleMapOptions';
 import _ from 'lodash';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const OfertList = ({history, setMarkers,setMarkerClass, setParams, setGoogleMap,setOffersList, state, state: {loading, markers, allOffers,markerClass, offersList}}) => {
     
@@ -81,7 +82,11 @@ const OfertList = ({history, setMarkers,setMarkerClass, setParams, setGoogleMap,
             </FiltersWrapper>
             <ContainerScroll>
             <ListContainer>
-
+                {loading && (
+                    <ProgressWrapper>
+                        <CircularProgress size='30px'/>
+                    </ProgressWrapper>
+                )}
                 {offersList && markerClass.prototype.filterOffers(offersList, params).map((item, index)=>{
                     
                  return(
@@ -152,6 +157,11 @@ const InfoSpan = styled.span`
     display: block;
     color: ${({theme})=>theme.colors.logo}; 
     font-size: 1.2rem;
+`;
+const ProgressWrapper = styled.div`
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
 `;
 
 const mapStateToProps = state => {
