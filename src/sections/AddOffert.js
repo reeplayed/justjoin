@@ -22,13 +22,16 @@ function AddOffert() {
     const { register, handleSubmit, errors, getValues, setError } = useForm();
     const [dialogOpen, setDialogOpen] = useState(false)
     const [techSize, setTechSize] = useState(1)
-    const [imageName, setImageName] = useState('')
-    const [imageURL, setImageURL] = useState('')
-    const [image, setImage] = useState(null)
     const [description, setDescription] = useState('')
     const [descriptionError, setDescriptionError] = useState('')
     const [loading, setLoading] = useState(false)
     const fullScreen = useMediaQuery('(max-width:800px)');
+
+    //optional image input
+
+    // const [imageName, setImageName] = useState('')
+    // const [imageURL, setImageURL] = useState('')
+    // const [image, setImage] = useState(null)
 
     async function onSubmit(inputs_data) {
 
@@ -85,7 +88,6 @@ function AddOffert() {
                     ...inputs_data, 
                     ...address,
                     tech_size: techSize,
-                    image,
                     description,
                     place_id: data.results[0].place_id,
                     lat: data.results[0].geometry.location.lat,
@@ -113,18 +115,20 @@ function AddOffert() {
         .finally(()=>setLoading(false))
     }
 
-    const fileSelectedHandler = event =>{
-        var reader = new FileReader()
-        const image_name = event.target.files[0].name 
-        setImage(event.target.files[0])
+    //optional image input
 
-        reader.onload = (e) => {
-            setImageURL(e.target.result)
-            setImageName(image_name)
-        };
+    // const fileSelectedHandler = event =>{
+    //     var reader = new FileReader()
+    //     const image_name = event.target.files[0].name 
+    //     setImage(event.target.files[0])
 
-        reader.readAsDataURL(event.target.files[0]);
-    }
+    //     reader.onload = (e) => {
+    //         setImageURL(e.target.result)
+    //         setImageName(image_name)
+    //     };
+
+    //     reader.readAsDataURL(event.target.files[0]);
+    // }
 
     const techSizeHandler = (action) =>{
         setTechSize(prev=>(action==='add' ? prev+1 : prev-1))
@@ -210,8 +214,7 @@ function AddOffert() {
                                 {errors.company_size  && <Info>{errors.company_size.message}</Info>}
                             </InputWrapper>
 
-                            
-                            <InputWrapper>
+                            {/* <InputWrapper>
                                 <Label>Compoany logo</Label>
                                 <input 
                                     type='file' 
@@ -226,7 +229,7 @@ function AddOffert() {
                                 {errors.image  && <Info>{errors.image.message}</Info>}
                                 <Info span>{imageName}</Info>
                                 
-                            </InputWrapper>
+                            </InputWrapper> */}
 
                             <Wrapper>
 
