@@ -3,16 +3,14 @@ import InfoLabel from '../components/InfoLabel';
 import TechRange from '../components/TechRange';
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Label from '../components/Label';
-import SortFilter from '../components/SortFilter';
-import OffertCard from '../components/OffertCard';
-import {useParams,useLocation, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {setMarkers, setGoogleMap, setOffersList, setMarkerClass, setParams} from '../store/actions';
 import createHTMLMapMarker from '../GoogleMapMarker';
 import axios, {baseURL} from '../axios'
 import {initMapOptions} from '../googleMapOptions';
-import {techIcon} from '../helpers/Options';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const SingleOfert = ({history, setMarkers,setMarkerClass, setParams, setGoogleMap,setOffersList, state, state: {params, loading, markers, allOffers,markerClass, offersList}} ) => {
 
@@ -92,6 +90,11 @@ const SingleOfert = ({history, setMarkers,setMarkerClass, setParams, setGoogleMa
         <Container>
            <ContainerScroll>
                 
+           {loading && (
+                    <ProgressWrapper>
+                        <CircularProgress size='30px'/>
+                    </ProgressWrapper>
+            )}
             
             <HeaderContainer>
                 <HeaderInner tech={offer.tech}>
@@ -298,6 +301,11 @@ const DescriptionContainer = styled.div`
 const DescriptionContent = styled.div`
     padding: 0 15px;
     color: ${({theme})=>theme.colors.logo};
+`;
+const ProgressWrapper = styled.div`
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
 `;
 
 const mapStateToProps = state => {
