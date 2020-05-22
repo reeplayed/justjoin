@@ -18,6 +18,8 @@ const SingleOfert = ({history, setMarkers,setMarkerClass, setParams, setGoogleMa
 
     const [offer, setOffer] = useState(null)
 
+    const [loading_2, setLoading_2] = useState(false)
+
     const ref = useRef()
 
     useEffect(()=>{
@@ -73,7 +75,9 @@ const SingleOfert = ({history, setMarkers,setMarkerClass, setParams, setGoogleMa
                 alert('Error')
             }
         }
+        setLoading_2(true)
         offerFetch()
+        setLoading_2(false)
     },[slug])
 
     useEffect(() => {
@@ -90,12 +94,12 @@ const SingleOfert = ({history, setMarkers,setMarkerClass, setParams, setGoogleMa
         <Container>
            <ContainerScroll>
                 
-           {loading && (
+           {(loading || loading_2) && (
                     <ProgressWrapper>
                         <CircularProgress size='30px'/>
                     </ProgressWrapper>
             )}
-            
+
             <HeaderContainer>
                 <HeaderInner tech={offer.tech}>
                     <HeadreWrapper>
