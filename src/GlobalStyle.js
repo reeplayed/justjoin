@@ -13,13 +13,13 @@ const GlobalStyles = createGlobalStyle`
   html {
    
     height: 100%;
-    @media only screen and (max-width: ${({theme})=>theme.breakpoints.md}) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
       font-size: 80.5%;
     }
-    @media only screen and (max-width: ${({theme})=>theme.breakpoints.s}) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
       font-size: 66.5%;
     }
-    @media only screen and (max-width: ${({theme})=>theme.breakpoints.xs}) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
       font-size: 60.5%;
     }
 
@@ -33,5 +33,5 @@ const GlobalStyles = createGlobalStyle`
   button{
     cursor: pointer;
   }
-`
+`;
 export default GlobalStyles;

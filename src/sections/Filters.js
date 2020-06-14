@@ -5,20 +5,20 @@ import MoreFilters from '../components/MoreFilters';
 import TechFilters from '../components/TechFilters';
 
 const Filters = () => {
-    return (
-        <Container>
-            <LocationFilters/>
-            <TechFilters/>
-            <MoreFilters/>
-        </Container>
-    );
+  return (
+    <Container>
+      <LocationFilters />
+      <TechFilters />
+      <MoreFilters />
+    </Container>
+  );
 };
 const Container = styled.div`
-    min-height: 65px;
-    background: ${({theme})=> theme.colors.primary};
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
+  min-height: 65px;
+  background: ${({ theme }) => theme.colors.primary};
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
 `;
 
 export default Filters;
