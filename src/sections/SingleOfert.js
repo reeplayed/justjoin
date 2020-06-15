@@ -149,7 +149,7 @@ const SingleOfert = ({
                         margin="4px 0"
                         fWeight="400"
                       >
-                        {offer.street}, {offer.city}
+                        {[offer.street, offer.city].join(', ')}
                       </Typography>
                     </MainInfoContainer>
                   </HeadreWrapper>
